@@ -10,6 +10,16 @@
        update_cache: yes
     when: ansible_distribution == "CentOS"
 
+  - hosts: all
+    become: true
+    tasks:
+    - name: create simone user
+      tags: always
+      user:
+        name: simone
+        groups: root
+
+
   - name: install udates (Ubuntu)
     apt:
       upgrade: dist
@@ -31,7 +41,7 @@
       mode: 0755
       owner: root
       group: root
-      
+
 - hosts: web_servers
   become: true
   tasks:
