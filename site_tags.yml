@@ -19,6 +19,22 @@
         name: simone
         groups: root
 
+    - name: add ssh key for simone
+      tags: always
+      authorized_key:
+        user: simone
+        key: "<add key here>"
+
+    - name: add sudoer file for simone
+      tags: always
+      copy:
+        src: sudoer_simone
+        dest: /etc/sudoers.d/simone
+        owner: root
+        group: root
+        mode: 0440
+
+
 
   - name: install udates (Ubuntu)
     apt:
