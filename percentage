@@ -1,0 +1,4 @@
+index=12 host=qw
+| stats count as total, count(eval(EventCode=1234)) as specific
+| eval percentage=(specific/total)*100
+| table percentage
